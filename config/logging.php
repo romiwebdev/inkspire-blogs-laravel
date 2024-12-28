@@ -87,12 +87,13 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
             'handler_with' => [
-                'host' => env('PAPERTRAIL_URL'),
-                'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'host' => env('PAPERTRAIL_URL', 'localhost'), // Default ke localhost
+                'port' => env('PAPERTRAIL_PORT', 514), // Default ke port 514
+                'connectionString' => 'tls://'.env('PAPERTRAIL_URL', 'localhost').':'.env('PAPERTRAIL_PORT', 514),
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],
+        
 
         'stderr' => [
             'driver' => 'monolog',
