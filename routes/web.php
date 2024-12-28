@@ -11,6 +11,10 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AuthorProfileController;
 use App\Http\Controllers\CommentController;
 
+Route::get('/', function () {
+    return response()->json(['status' => 'Application is running!']);
+});
+
 
 Route::get('login', function () {
     return view('auth.login');
